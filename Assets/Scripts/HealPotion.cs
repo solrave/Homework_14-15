@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class HealPotion : Potion
 {
+    protected override void Use(PlayerState user)
+    {
+        user.AddHealth(EffectValue);
+        base.Use(user);
+    }
     
-    public HealPotion(string name, float effectValue) : base(name, effectValue)
-    {
-    }
-
-    public override void Use()
-    {
-        
-    }
 }

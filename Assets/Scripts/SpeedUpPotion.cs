@@ -1,13 +1,9 @@
-using UnityEngine;
 
 public class SpeedUpPotion : Potion
 {
-  public SpeedUpPotion(string name, float effectValue) : base(name, effectValue)
+  protected override void Use(PlayerState user)
   {
-  }
-
-  public override void Use()
-  {
-    
+    user.AddSpeed(EffectValue);
+    base.Use(user);
   }
 }

@@ -1,15 +1,11 @@
+using System;
 using UnityEngine;
 
 public abstract class Potion : UsableItem
 {
-  private float _effectValue;
-
-  protected Potion(string name, float effectValue) : base(name)
-  {
-    _effectValue = effectValue;
-  }
-
-  public float EffectValue => _effectValue;
+  [SerializeField] private float _effectValue;
   
+
+  protected float EffectValue => _effectValue;
   
 }

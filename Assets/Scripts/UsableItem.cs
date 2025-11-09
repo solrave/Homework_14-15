@@ -1,15 +1,37 @@
+using System;
 using UnityEngine;
 
 public abstract class UsableItem : MonoBehaviour
 {
-  private readonly string _name;
-
-  protected UsableItem(string name)
-  {
-    _name = name;
-  }
-  //
+  [SerializeField] private string _name;
+  [SerializeField] private ParticleSystem _itemParticle;
+  [SerializeField] protected Rigidbody _itemRigidbody;
   public string Name => _name;
   
-  public abstract void Use();
+  private void Start()
+  {
+    _itemRigidbody.isKinematic = true;
+  }
+
+  public void UseItem(PlayerState user)
+  {
+    Use(user);
+    //spawn particle
+  }
+
+  protected virtual void Use(PlayerState user)
+  {
+    Instantiate(_itemParticle, transform.position, Quaternion.identity).Play();
+  }
+
+  public virtual void Throw(PlayerState user)
+  {
+    transform.SetParent(null);
+    _itemRigidbody.isKinematic = false;
+    _itemRigidbody.GetComponent<Collider>().isTrigger = false;
+    _itemRigidbody.AddForce(user.transform.forward * 5,ForceMode.Impulse);
+  }
+  // protected virtual void Discard(){}
+  
 }
+

@@ -3,6 +3,7 @@
   public class Projectile : MonoBehaviour
   {
     private Transform _spawnPoint;
+    private Rigidbody _rigidbody;
 
     private void Update()
     {
@@ -16,7 +17,7 @@
 
     private void CheckDistance()
     {
-      if ((_spawnPoint.transform.position - transform.position).magnitude > 5f)
+      if ((_spawnPoint.transform.position - transform.position).magnitude > 15f)
       {
         Destroy(gameObject);
       }

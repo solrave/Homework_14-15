@@ -13,16 +13,13 @@ public abstract class UsableItem : MonoBehaviour
     _itemRigidbody.isKinematic = true;
   }
 
-  public void UseItem(PlayerState user)
+  public void UseItem(GameObject user)
   {
     Use(user);
-    //spawn particle
-  }
-
-  protected virtual void Use(PlayerState user)
-  {
     Instantiate(_itemParticle, transform.position, Quaternion.identity).Play();
   }
+
+  protected abstract void Use(GameObject user);
 
   public virtual void Throw(PlayerState user)
   {

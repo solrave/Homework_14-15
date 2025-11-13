@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-   [SerializeField] private ProjectileShooter _shooter;
-   
-   private const string HealthStatName = "Health";
+  private const string HealthStatName = "Health";
    private const string SpeedStatName = "Speed";
    private const float HealthBaseValue = 100f;
    private const float SpeedBaseValue = 10f;
@@ -15,7 +13,7 @@ public class PlayerState : MonoBehaviour
    private PlayerStat _speed;
 
    public float PlayerSpeed => _speed.CurrentValue;
-   public ProjectileShooter Shooter => _shooter;
+   
    private void Start()
    {
       Initialize();
@@ -36,9 +34,5 @@ public class PlayerState : MonoBehaviour
    {
       _speed.ModifyState(value);
    }
-
-   public void Shoot()
-   {
-      _shooter.Shoot();
-   }
+   
 }

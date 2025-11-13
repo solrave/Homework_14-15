@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ShootingItem : UsableItem
 {
-    protected override void Use(PlayerState user)
+    protected override void Use(GameObject user)
     {
-       user.Shoot();
+       user.GetComponent<ProjectileShooter>().Shoot();
     }
 }

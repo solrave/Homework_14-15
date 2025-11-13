@@ -8,7 +8,7 @@ public class ItemSpawner : MonoBehaviour
    [SerializeField] private List<UsableItem> _itemsPrefabs;
    [SerializeField] private float _spawnCooldown;
    private float _elapsedTime;
-   [SerializeField] private GameObject _potion;
+   [SerializeField] private UnityEngine.GameObject _potion;
 
    private void Start()
    {

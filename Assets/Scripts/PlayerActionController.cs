@@ -4,7 +4,9 @@ using UnityEngine;
 public class PlayerActionController : MonoBehaviour
 {
    [SerializeField] private ItemCollector _itemCollector;
-   //[SerializeField] private PlayerState _playerState;
+   [SerializeField] private PlayerState _playerState;
+   [SerializeField] private ProjectileShooter _shooter;
+   
    private InputReader _inputReader;
    private float _elapsedTime = 0f;
    private readonly float _destroyTime = 2f;
@@ -27,7 +29,7 @@ public class PlayerActionController : MonoBehaviour
 
    private void MovePlayer()
    {
-      transform.Translate(new Vector3(_inputReader.XAxis,0,_inputReader.YAxis) * (_itemCollector.PlayerState.PlayerSpeed * Time.deltaTime));
+      transform.Translate(new Vector3(_inputReader.XAxis,0,_inputReader.YAxis) * (_playerState.PlayerSpeed * Time.deltaTime));
    }
 
    private void UseCurrentItem()
@@ -36,13 +38,13 @@ public class PlayerActionController : MonoBehaviour
       {
          if (_inputReader.UseActionInvoked)
          {
-            _itemCollector.CurrenItem.UseItem(_itemCollector.PlayerState);
+            _itemCollector.CurrenItem.UseItem(_playerState.gameObject);
             _itemCollector.ReleaseItemAndDestroy();
          }
 
          if (_inputReader.ThrowActionInvoked)
          {
-            _itemCollector.CurrenItem.Throw(_itemCollector.PlayerState);
+            _itemCollector.CurrenItem.Throw(_playerState);
             _itemToDestroy = _itemCollector.CurrenItem;
            _itemCollector.ReleaseItem();
          }

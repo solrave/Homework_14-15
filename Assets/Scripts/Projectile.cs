@@ -1,9 +1,15 @@
+  using System;
   using UnityEngine;
 
   public class Projectile : MonoBehaviour
   {
     private Transform _spawnPoint;
     private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+      _rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -21,5 +27,10 @@
       {
         Destroy(gameObject);
       }
+    }
+
+    public void Launch(Vector3 direction, float force)
+    {
+      _rigidbody.AddForce(direction * force, ForceMode.VelocityChange);
     }
   }

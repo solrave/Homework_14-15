@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public abstract class UsableItem : MonoBehaviour
@@ -21,12 +20,12 @@ public abstract class UsableItem : MonoBehaviour
 
   protected abstract void Use(GameObject user);
 
-  public virtual void Throw(PlayerState user)
+  public virtual void Throw(GameObject user)
   {
     transform.SetParent(null);
     _itemRigidbody.isKinematic = false;
     _itemRigidbody.GetComponent<Collider>().isTrigger = false;
-    _itemRigidbody.AddForce(user.transform.forward * 5,ForceMode.Impulse);
+    _itemRigidbody.AddForce(user.transform.forward * 5f,ForceMode.VelocityChange);
   }
   // protected virtual void Discard(){}
   

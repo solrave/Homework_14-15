@@ -5,7 +5,6 @@ public class PlayerActionController : MonoBehaviour
 {
    [SerializeField] private ItemCollector _itemCollector;
    [SerializeField] private PlayerState _playerState;
-   [SerializeField] private ProjectileShooter _shooter;
    
    private InputReader _inputReader;
    private float _elapsedTime = 0f;
@@ -44,7 +43,7 @@ public class PlayerActionController : MonoBehaviour
 
          if (_inputReader.ThrowActionInvoked)
          {
-            _itemCollector.CurrenItem.Throw(_playerState);
+            _itemCollector.CurrenItem.Throw(_playerState.gameObject);
             _itemToDestroy = _itemCollector.CurrenItem;
            _itemCollector.ReleaseItem();
          }
